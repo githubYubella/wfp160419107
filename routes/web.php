@@ -31,6 +31,7 @@ Route::get('/myfriend/{nrp?}', function ($nrp= null) {
         return view('biodata');
     }
     return view('biodata' ,compact('nrp'));
+    // return view('nrp',['nrp'=>$nrp]);
 });
 // -------------
 
