@@ -466,7 +466,7 @@
                             <th class="text-muted"></th>
                             <td></td>
                             <th class="text-muted" style="width:50px">NRP</th>
-                           
+
                         </tr>
                     </thead>
                     <tbody>
@@ -482,10 +482,14 @@
                             </td>
                             <td></td>
                             <td><span class="badge bg-danger-lt">160419157</span></td>
-                            <td><form action="../myfriend/160419157">
-                                <button>Button</button>
-                            </form></td>
-                        </small></td>
+                            <td>
+                                <form action="../myfriend/160419157">
+                                    <button>Button</button>
+                                </form>
+                                <!-- <button onclick="location.href=''"></button> -->
+
+                            </td>
+                            </small></td>
 
                         </tr>
                         <tr class="v-middle">
@@ -500,7 +504,7 @@
                                 <button>Button</button>
                             </form></td> -->
                             <td><a href="/myfriend/160419083">View</a></td>
-                        </small></td>
+                            </small></td>
 
 
                         </tr>

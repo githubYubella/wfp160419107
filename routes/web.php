@@ -35,6 +35,22 @@ Route::get('/myfriend/{nrp?}', function ($nrp= null) {
 });
 // -------------
 
+// --Exercise Week 2--
+Route::get('/catalog', function () {
+    return view('catalog',['cataloglist'=>[
+        [
+            'catalog_id' => 1,
+            'catalog_name'=> 'Medicines',
+            'catalog_slug'=>'medicines'
+        ],
+        [
+            'catalog_id' => 2,
+            'catalog_name'=> 'Medical Quipment',
+            'catalog_slug'=>'med_quip'
+        ]
+    ]]);
+});
+
 
 // Route::get('/myfriend', function () {
 //     return view('biodata');
@@ -56,14 +72,11 @@ Route::get('/greeting', function () {
 //     return view('welcome');
 // });
 
-// Route::get('/Margareta', function () {
-//     return view('welcome');
-// });
 
 // Buat base url hanya diakses dengan POST
-// Route::post('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('mystore');
+});
 
 
 // php artisan route:list
