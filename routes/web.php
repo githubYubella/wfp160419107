@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('Obat','ObatController');
+// Route::resource('Product','ProductController');
+Route::resource('Category','CategoryController');
+
+
+
+
+
 Route::get('/my', function () {
     return view('biodata',['nrp'=> '160419107',
     'nama'=>'Margareta Yubella', 
@@ -36,29 +44,29 @@ Route::get('/myfriend/{nrp?}', function ($nrp= null) {
 // -------------
 
 // --Exercise Week 2--
-Route::get('/catalog', function () {
-    return view('catalog',['cataloglist'=>[
-        [
-            'catalog_id' => 1,
-            'catalog_name'=> 'Medicines',
-            'catalog_slug'=>'medicines'
-        ],
-        [
-            'catalog_id' => 2,
-            'catalog_name'=> 'Medical Quipment',
-            'catalog_slug'=>'med_quip'
-        ]
-    ]]);
-});
+// Route::get('/catalog', function () {
+//     return view('catalog',['cataloglist'=>[
+//         [
+//             'catalog_id' => 1,
+//             'catalog_name'=> 'Medicines',
+//             'catalog_slug'=>'medicines'
+//         ],
+//         [
+//             'catalog_id' => 2,
+//             'catalog_name'=> 'Medical Quipment',
+//             'catalog_slug'=>'med_quip'
+//         ]
+//     ]]);
+// });
 
 
 // Route::get('/myfriend', function () {
 //     return view('biodata');
 // });
 
-Route::get('/coba', function () {
-    return view('biodata');
-});
+// Route::get('/coba', function () {
+//     return view('biodata');
+// });
 
 // Route::get('/myfriend', function () {
 //     return view('welcome',['nrp'=> '160419107','nama'=>'Margareta Yubella', 'asal'=>'Kediri','hobby'=>'']);

@@ -12,12 +12,27 @@ class CategorySeedeer extends Seeder
      * @return void
      */
     public function run()
+   
     {
-        for($i=0; $i<10;$i++){
+       $arrCategory = ['Analgesik Narkotik', 'Analgesik Non Narkotik', 'Antipirai', 'Nyeri Neuropatik','Anestetik Lokal'
+        , 'Anestetik Umum dan Oksigen', 'Obat untuk Prosedur Pre Operatif', 'Antialergi dan Obat untuk Anafilaksis'
+        , 'Khusus', 'Umum', 'Antiepilepsi - Antikonvulsi'];
+        // for($i=0; $i<10;$i++){
+        //     DB::table('categories')->insert([
+        //         'nama'=> Str::random(10),
+        //      ]); 
+        // }
+
+        foreach($arrCategory as $c){
             DB::table('categories')->insert([
-                'nama'=> Str::random(10),
-             ]); 
+              
+                'nama'=> $c
+
+            ]);
+
         }
+
+        
       
     }
 }
