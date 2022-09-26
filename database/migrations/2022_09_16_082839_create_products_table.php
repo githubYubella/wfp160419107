@@ -24,6 +24,8 @@ class CreateProductsTable extends Migration
             $table->string('faskes2');
             $table->string('faskes3');
             
+
+            
             $table->timestamps();
         });
     }
