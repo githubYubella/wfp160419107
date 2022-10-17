@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 Route::resource('Obat','ObatController'); //
 Route::resource('Product','ProductController');
+Route::resource('Products','ProductController');
+
 // Route::resource('Products','CategoryController');
 Route::resource('Categories','CategoryController');
+Route::post('/products/showInfo','ObatController@showInfo')->name('products.showInfo');
 
 
 
@@ -85,7 +88,7 @@ Route::get('/greeting', function () {
 
 // Buat base url hanya diakses dengan POST
 Route::get('/', function () {
-    return view('mystore');
+    return view('welcome');
 });
 
 

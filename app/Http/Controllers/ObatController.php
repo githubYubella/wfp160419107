@@ -17,8 +17,11 @@ class ObatController extends Controller
     {
         //
         // $queryRaw = DB::select(DB::raw(" Select * From categories"));
+        // $queryBuilder = DB::table('products')->get();
+        // return view('Obat.product',['data'=>$queryBuilder]);
+
         $queryBuilder = DB::table('products')->get();
-        return view('Obat.product',['data'=>$queryBuilder]);
+        return view('Obat.products', ['data' => $queryBuilder]);
 
         // $queryModel = Category::all();
         // dd($queryModel);
@@ -27,7 +30,6 @@ class ObatController extends Controller
 
 
         echo 'Miok Sesat';
-
     }
 
     /**
@@ -60,7 +62,20 @@ class ObatController extends Controller
     public function show($id)
     {
         //
+        $dataproduct = DB::table('products')->where('id', $id)->first();
+        // dd($dataproduct);
+        return view('Obat.show', compact('dataproduct'));
     }
+
+    public function showInfo()
+    {
+        return response()->json(array(
+            'status' => 'oke',
+            'msg' => "<div class='alert alert-info'>
+             Did you know? <br>This message is sent by a Controller.'</div>"
+        ), 200);
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -96,5 +111,3 @@ class ObatController extends Controller
         //
     }
 }
-
-
