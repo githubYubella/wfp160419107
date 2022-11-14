@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Obat;
+use App\Product;
+use App\Transaction;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,6 +17,36 @@ class ObatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function produk_trans()
+    {
+
+        $produk = Product::all();
+        $transaksi = Transaction::all();
+
+        return view('Obat.Product.product_trans', compact('produk', 'transaksi'));
+    }
+    public function simpan_produk_trans(Request $request)
+    {
+
+        // $data=new Product();
+        // $data=new Product();
+
+        $data = DB::table('product_transaction')->insert([
+            'product_id' => $request->get('produk'),
+            'transaction_id' => $request->get('transaksi'),
+            'quantity' => $request->get('quantity'),
+            'price' => $request->get('price'),
+
+        ]);
+
+
+
+
+
+       
+        return redirect()->route('Obat.index')->with('status', 'Obat is added');
+    }
     public function index()
     {
         //
@@ -21,7 +55,7 @@ class ObatController extends Controller
         // return view('Obat.product',['data'=>$queryBuilder]);
 
         $queryBuilder = DB::table('products')->get();
-        return view('Obat.products', ['data' => $queryBuilder]);
+        return view('Obat.Product.products', ['data' => $queryBuilder]);
 
         // $queryModel = Category::all();
         // dd($queryModel);
@@ -29,7 +63,7 @@ class ObatController extends Controller
 
 
 
-        echo 'Miok Sesat';
+
     }
 
     /**
@@ -40,6 +74,9 @@ class ObatController extends Controller
     public function create()
     {
         //
+        $categori = DB::table('categories')->get();
+        // return view("Obat.Buyer.create",compact("categori"));
+        return view('Obat.Product.create', compact("categori"));
     }
 
     /**
@@ -51,6 +88,22 @@ class ObatController extends Controller
     public function store(Request $request)
     {
         //
+        $data = new Product();
+        // $data = DB::table('products');
+
+        $data->nama = $request->get('nama_obat');
+        $data->form = $request->get('form_obat');
+        $data->restriction = $request->get('restriction');
+        $data->description = $request->get('deskripsi');
+        $data->category_id = $request->get('kategori_id');
+
+        $data->faskes1 = $request->get('faskes1');
+        $data->faskes2 = $request->get('faskes2');
+        $data->faskes3 = $request->get('faskes3');
+        $data->image = $request->get('image');
+
+        $data->save();
+        return redirect()->route('Obat.index')->with('status', 'Obat is added');
     }
 
     /**
@@ -64,7 +117,7 @@ class ObatController extends Controller
         //
         $dataproduct = DB::table('products')->where('id', $id)->first();
         // dd($dataproduct);
-        return view('Obat.show', compact('dataproduct'));
+        return view('Obat.Product.show', compact('dataproduct'));
     }
 
     public function showInfo()

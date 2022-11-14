@@ -18,7 +18,8 @@ Route::resource('Products','ProductController');
 
 // Route::resource('Products','CategoryController');
 Route::resource('Categories','CategoryController');
-Route::post('/products/showInfo','ObatController@showInfo')->name('products.showInfo');
+// Route::post('/products/showInfo','ObatController@showInfo')->name('products.showInfo');
+Route::post('/products/showInfo','ObatController@showInfo')->name('Product.products.showInfo');
 
 
 
@@ -90,6 +91,29 @@ Route::get('/greeting', function () {
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('/user', function () {
+//     return view('user');
+// });
+
+Route::resource('User','UserController');
+Route::resource('Role','RoleController');
+Route::resource('Transaction','TransactionController');
+Route::post('Transaction/showDataAjax/','TransactionController@showAjax')->name('Transaction.showAjax');
+Route::post('Transaction/showmodal','TransactionController@showAjax')->name('Transaction.showModal');
+
+
+Route::resource('Buyers','BuyerController');
+Route::resource('Category','CategoryController');
+Route::get('Product_Transaction','ObatController@produk_trans');
+Route::post('Product_Transaction','ObatController@simpan_produk_trans')->name('simpan_produk_transaksi');
+
+
+
+
+
+
+
 
 
 // php artisan route:list

@@ -60,7 +60,7 @@
         </td>
 
         <td>
-          <a class='btn btn-info' href="{{route('Obat.show',$d->id)}}"
+          <a class='btn btn-info' href="{{route('Product.products.showInfo',$d->id)}}"
              data-target="#show{{$d->id}}" data-toggle='modal'>detail</a>        
           <div class="modal fade" id="show{{$d->id}}" tabindex="-1" role="basic" aria-hidden="true">
             <div class="modal-dialog">
@@ -112,7 +112,7 @@ function showInfo()
 {
   $.ajax({
     type:'POST',
-    url:'{{route("products.showInfo")}}',
+    url:'{{route("Product.products.showInfo")}}',
     data:'_token=<?php echo csrf_token() ?>',
     success: function(data){
        $('#showinfo').html(data.msg)

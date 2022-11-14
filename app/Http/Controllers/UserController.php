@@ -1,27 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Product;
-use App\Transaction;
-
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
-
-class ProductController extends Controller
+use App\User;
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
         //
-        // $queryBuilder = DB::table('categories')->get();
-        // return view('Obat.products',['data'=>$queryBuilder]);
+        // $data = DB::table('users')->get();
+        $data=User::all();
+        return view('Obat.User.user',compact('data'));
+
     }
 
     /**
@@ -32,7 +29,12 @@ class ProductController extends Controller
     public function create()
     {
         //
-       
+        // $categori = DB::table('categories')->get();
+        // return view("Obat.Buyer.create");
+        // return view('Obat.User.create',compact("categori"));
+        return view('Obat.User.create');
+
+
     }
 
     /**
@@ -44,6 +46,17 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $data=new User();
+        // $data = DB::table('products');
+
+        $data->names=$request->get('nama');
+        $data->email=$request->get('email');
+        $data->password=$request->get('password');
+
+        
+        
+        $data->save();
+        return redirect()->route('User.index')->with('status','Obat is added');
     }
 
     /**

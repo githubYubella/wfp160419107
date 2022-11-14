@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +17,7 @@ class CategoryController extends Controller
     {
         //
         $queryBuilder = DB::table('categories')->get();
-        return view('Obat.categories',['data'=>$queryBuilder]);
+        return view('Obat.Category.categories',['data'=>$queryBuilder]);
     }
 
     /**
@@ -27,6 +28,8 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        return view('Obat.Category.create');
+
     }
 
     /**
@@ -38,6 +41,13 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        $data=new Category();
+        $data->nama=$request->get('nama_kategori');
+        // $data->address=$request->get('address');
+        // $data->address=$request->get('kategori_id');
+
+        $data->save();
+        return redirect()->route('Category.index')->with('status','Category is added');
     }
 
     /**

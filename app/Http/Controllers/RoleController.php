@@ -1,27 +1,26 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Product;
-use App\Transaction;
-
-
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Http\Request;
 
-class ProductController extends Controller
+
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
         //
-        // $queryBuilder = DB::table('categories')->get();
-        // return view('Obat.products',['data'=>$queryBuilder]);
+       
+
+       
+
+    
     }
 
     /**
@@ -32,7 +31,6 @@ class ProductController extends Controller
     public function create()
     {
         //
-       
     }
 
     /**
